@@ -1,5 +1,5 @@
 # go-api-learning
-Small project creating an API with `go` to help learn the language.
+Small project creating an API with `go` to help learn the language. Followed this tutorial: https://go.dev/doc/tutorial/web-service-gin
 
 To start the server navigate to the `web-service-gin` dir and run:
 
