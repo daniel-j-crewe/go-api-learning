@@ -24,10 +24,24 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/songs", getSongs)
+	router.POST("/songs", postSong)
 
 	router.Run("localhost:8080")
 }
 
-func getSongs(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, songs)
+func getSongs(context *gin.Context) {
+	context.IndentedJSON(http.StatusOK, songs)
+}
+
+func postSong(context *gin.Context) {
+	var newSong song
+
+	// Call BindJSON to bind the received JSON to newSong
+	if err := context.BindJSON(&newSong); err != nil {
+		return
+	}
+
+	// Add the new song to the slice
+	songs = append(songs, newSong)
+	context.IndentedJSON(http.StatusCreated, newSong)
 }
